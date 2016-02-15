@@ -103,9 +103,11 @@ public class MBeanSender implements Dispatcher {
 
     public void schedule(MBeanCollector collector) {
         collector.setSender(this);
+        final long interval = collector.getInterval();
         _scheduler.scheduleAtFixedRate(collector, 0,
-                                       collector.getInterval(),
+                                       interval,
                                        TimeUnit.SECONDS);
+        _log.info("Scheduled collector at fixed rate: " + interval);
     }
 
     public void addSender(String protocol, Sender sender) {

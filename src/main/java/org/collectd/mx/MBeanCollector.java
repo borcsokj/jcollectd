@@ -49,7 +49,7 @@ public class MBeanCollector implements Runnable {
     private static final String _metricTypeField =
         Network.getProperty("mx.metricTypeField", "metricType");
     private MBeanSender _sender;
-    private long _interval = 60;
+    private long _interval = Long.parseLong(Network.getProperty("mx.interval", "10"));
     private Map<String,MBeanQuery> _queries =
         new HashMap<String,MBeanQuery>();
 
