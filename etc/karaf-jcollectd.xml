@@ -1,0 +1,27 @@
+<jcollectd-config>
+    <mbeans name="karaf">
+        <mbean name="org.ops4j.pax.jdbc.pool.dbcp2:type=GenericObjectPool,*" alias="GenericObjectPool">
+            <attribute name="NumActive" alias="active"/>
+            <attribute name="NumIdle" alias="idle"/>
+            <attribute name="MaxTotal" alias="max total"/>
+            <attribute name="MaxIdle" alias="max idle"/>
+            <attribute name="NumWaiters" alias="waiters"/>
+        </mbean>
+        <mbean name="net.sf.ehcache:type=CacheStatistics,CacheManager=__DEFAULT__,*" alias="CacheStatistics">
+            <attribute name="ObjectCount" alias="objects"/>
+            <attribute name="DiskStoreObjectCount" alias="DiskStore objects"/>
+            <attribute name="MaxTotal" alias="max total"/>
+            <attribute name="CacheHits" alias="cache hits"/>
+            <attribute name="CacheMisses" alias="cache misses"/>
+            <attribute name="WriterQueueLength" alias="queue length"/>
+        </mbean>
+        <mbean name="org.dozer.jmx:type=DozerStatisticsController" alias="DozerStatistics">
+            <attribute name="CacheHitCount" alias="cache hits"/>
+            <attribute name="CacheMissCount" alias="cache misses"/>
+            <attribute name="FieldMappingFailureCount" alias="field mapping failures"/>
+            <attribute name="FieldMappingSuccessCount" alias="field mapping success"/>
+            <attribute name="MappingFailureCount" alias="mapping failures"/>
+            <attribute name="MappingSuccessCount" alias="mapping success"/>
+        </mbean>
+    </mbeans>
+</jcollectd-config>
