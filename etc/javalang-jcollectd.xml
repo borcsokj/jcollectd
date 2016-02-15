@@ -22,11 +22,9 @@
       <attribute name="UnloadedClassCount" alias="UnloadedClasses"/>
     </mbean>
 
-    <!-- ms
     <mbean name="java.lang:type=Compilation" alias="Compilation">
       <attribute name="TotalCompilationTime" alias="TotalTime"/>
     </mbean>
-    -->
 
     <mbean name="java.lang:type=GarbageCollector,*" alias="GC">
       <attribute name="CollectionCount" type="counter"/>
