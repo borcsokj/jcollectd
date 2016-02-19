@@ -1,5 +1,6 @@
-<jcollectd-config>
-    <mbeans name="karaf">
+<?xml version="1.0" encoding="UTF-8"?>
+<jcollectd-config xmlns="http://config.collectd.org/types">
+    <plugin name="choice">
         <mbean name="org.ops4j.pax.jdbc.pool.dbcp2:type=GenericObjectPool,*" alias="GenericObjectPool">
             <attribute name="NumActive" alias="active"/>
             <attribute name="NumIdle" alias="idle"/>
@@ -9,7 +10,7 @@
         </mbean>
         <mbean name="net.sf.ehcache:type=CacheStatistics,CacheManager=__DEFAULT__,*" alias="CacheStatistics">
             <attribute name="ObjectCount" alias="objects"/>
-            <attribute name="DiskStoreObjectCount" alias="DiskStore objects"/>
+            <attribute name="DiskStoreObjectCount" alias="diskstore objects"/>
             <attribute name="MaxTotal" alias="max total"/>
             <attribute name="CacheHits" alias="cache hits"/>
             <attribute name="CacheMisses" alias="cache misses"/>
@@ -23,5 +24,23 @@
             <attribute name="MappingFailureCount" alias="mapping failures"/>
             <attribute name="MappingSuccessCount" alias="mapping success"/>
         </mbean>
-    </mbeans>
+        
+        <collector class="org.collectd.extension.ThreadStateCollector">
+            <dataset name="STATE" alias="ThreadStates">
+                <attribute name="NEW" alias="NEW"/>
+                <attribute name="NATIVE" alias="NATIVE"/>
+                <attribute name="SUSPENDED" alias="SUSPENDED"/>
+                <attribute name="RUNNABLE" alias="RUNNABLE"/>
+                <attribute name="TERMINATED" alias="TERMINATED"/>
+                <attribute name="BLOCKED" alias="BLOCKED"/>
+                <attribute name="WAITING" alias="WAITING"/>
+                <attribute name="TIMED_WAITING" alias="TIMED_WAITING"/>
+            </dataset>
+            <dataset name="TIME" alias="ThreadTimes">
+                <attribute name="BLOCKED" alias="BLOCKED"/>
+                <attribute name="WAITING" alias="WAITING"/>
+                <attribute name="TIMED_WAITING" alias="TIMED_WAITING"/>
+            </dataset>
+        </collector>
+    </plugin>
 </jcollectd-config>
