@@ -81,6 +81,11 @@ The MBeanReceiver can be started using the following command:
 
         jcd.mx.hosts=dev|qa
 
+* jcd.mx.interval - Refresh interval (in seconds).
+  Example:
+
+        jcd.mx.interval=10
+
 ### MBeanSender
 
 Any Java application can be configured to publish MBean data without
